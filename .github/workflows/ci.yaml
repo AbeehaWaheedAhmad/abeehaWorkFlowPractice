@@ -1,0 +1,23 @@
+name: abeeha-wf
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome step
+        run: echo "welcome to github actions"
+      - name: Checkout Repository
+        run: actions/checkout@v4
+      - name: Repository Information
+        run:  |
+          echo "Repository name: ${{github.repository}}"
+          echo "Type of event: ${{github.event_name}}"
+          git --version
+          git branch
+          git log
